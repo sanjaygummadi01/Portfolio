@@ -1,13 +1,64 @@
+import CertificateCard from './CertificateCard';
+
+import certGoogleUx from '@/assets/cert-google-ux.png';
+import certIxdf from '@/assets/cert-ixdf.png';
+import certFigma from '@/assets/cert-figma.png';
+import certMeta from '@/assets/cert-meta.png';
+import certReact from '@/assets/cert-react.png';
+import certTypescript from '@/assets/cert-typescript.png';
+
 const designCertifications = [
-  { name: 'Google UX Design', issuer: 'Google', year: '2024' },
-  { name: 'Interaction Design', issuer: 'IxDF', year: '2023' },
-  { name: 'Advanced Figma', issuer: 'Figma Academy', year: '2023' },
+  {
+    name: 'Google UX Design',
+    issuer: 'Google',
+    year: '2024',
+    image: certGoogleUx,
+    description:
+      'Professional certification in UX design covering the end-to-end design process including empathizing with users, defining pain points, ideating solutions, creating wireframes and prototypes, and conducting usability testing.',
+  },
+  {
+    name: 'Interaction Design',
+    issuer: 'IxDF',
+    year: '2023',
+    image: certIxdf,
+    description:
+      'Comprehensive training in interaction design principles from the Interaction Design Foundation, covering user-centered design, usability, and creating engaging digital experiences that delight users.',
+  },
+  {
+    name: 'Advanced Figma',
+    issuer: 'Figma Academy',
+    year: '2023',
+    image: certFigma,
+    description:
+      'Advanced certification in Figma covering complex prototyping, design systems, component variants, auto-layout mastery, and collaborative design workflows for enterprise teams.',
+  },
 ];
 
 const devCertifications = [
-  { name: 'Meta Front-End Developer', issuer: 'Meta', year: '2024' },
-  { name: 'React Advanced', issuer: 'Udemy', year: '2023' },
-  { name: 'TypeScript Mastery', issuer: 'Frontend Masters', year: '2023' },
+  {
+    name: 'Meta Front-End Developer',
+    issuer: 'Meta',
+    year: '2024',
+    image: certMeta,
+    description:
+      'Professional certification from Meta covering HTML, CSS, JavaScript, React, version control, and front-end development best practices for building modern web applications.',
+  },
+  {
+    name: 'React Advanced',
+    issuer: 'Udemy',
+    year: '2023',
+    image: certReact,
+    description:
+      'Advanced React certification covering hooks, context API, Redux, performance optimization, testing, and building scalable React applications with modern patterns.',
+  },
+  {
+    name: 'TypeScript Mastery',
+    issuer: 'Frontend Masters',
+    year: '2023',
+    image: certTypescript,
+    description:
+      'Comprehensive TypeScript certification covering advanced types, generics, decorators, type guards, and integrating TypeScript with React for type-safe front-end development.',
+  },
 ];
 
 const CertificationsSection = () => {
@@ -25,19 +76,12 @@ const CertificationsSection = () => {
             </h3>
             <div className="grid gap-4">
               {designCertifications.map((cert, index) => (
-                <div
+                <CertificateCard
                   key={cert.name}
-                  className="cert-badge opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <h4 className="font-heading font-semibold text-foreground">{cert.name}</h4>
-                      <p className="text-muted-foreground text-sm">{cert.issuer}</p>
-                    </div>
-                    <span className="font-heading text-primary text-sm font-semibold">{cert.year}</span>
-                  </div>
-                </div>
+                  {...cert}
+                  variant="design"
+                  delay={index * 0.15}
+                />
               ))}
             </div>
           </div>
@@ -49,22 +93,12 @@ const CertificationsSection = () => {
             </h3>
             <div className="grid gap-4">
               {devCertifications.map((cert, index) => (
-                <div
+                <CertificateCard
                   key={cert.name}
-                  className="cert-badge opacity-0 animate-fade-in"
-                  style={{ 
-                    animationDelay: `${index * 0.15}s`,
-                    borderColor: 'hsl(280 100% 60% / 0.3)'
-                  }}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="text-left">
-                      <h4 className="font-heading font-semibold text-foreground">{cert.name}</h4>
-                      <p className="text-muted-foreground text-sm">{cert.issuer}</p>
-                    </div>
-                    <span className="font-heading text-accent text-sm font-semibold">{cert.year}</span>
-                  </div>
-                </div>
+                  {...cert}
+                  variant="dev"
+                  delay={index * 0.15}
+                />
               ))}
             </div>
           </div>
