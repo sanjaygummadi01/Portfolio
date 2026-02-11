@@ -10,49 +10,71 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: '#050B0E' }}
     >
-      {/* Half-face portrait - tight crop, dramatic side lighting, blends into black */}
+      {/* Half-face portrait - tight crop, dramatic split lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <img
-          src={heroPortrait}
-          alt="Sanjay Gummadi"
-          className="absolute object-cover"
+        {/* Portrait container - positioned right, zoomed on face */}
+        <div
+          className="absolute"
           style={{
-            right: '-8%',
+            right: '-5%',
             top: '50%',
-            transform: 'translateY(-42%) scale(1.6)',
-            transformOrigin: '60% 30%',
-            height: '100%',
-            width: '60%',
-            objectPosition: '50% 15%',
-            filter: 'brightness(0.5) contrast(1.4) saturate(0.6)',
+            transform: 'translateY(-42%)',
+            height: '120%',
+            width: '58%',
           }}
-        />
-        {/* Left fade - creates half-face shadow blending into background */}
+        >
+          <img
+            src={heroPortrait}
+            alt="Sanjay Gummadi"
+            className="absolute w-full h-full object-cover"
+            style={{
+              objectPosition: '50% 18%',
+              transform: 'scale(1.5)',
+              transformOrigin: '55% 28%',
+              filter: 'brightness(0.65) contrast(1.3) saturate(0.55)',
+            }}
+          />
+          {/* Split lighting overlay - darkens left half of face dramatically */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'linear-gradient(to right, rgba(5,11,14,0.95) 0%, rgba(5,11,14,0.8) 25%, rgba(5,11,14,0.45) 45%, rgba(5,11,14,0.1) 60%, transparent 75%)',
+            }}
+          />
+          {/* Additional vertical shadow on face center-left */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: 'radial-gradient(ellipse 80% 120% at 30% 50%, rgba(5,11,14,0.7) 0%, transparent 70%)',
+            }}
+          />
+        </div>
+        {/* Left background fade into black */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to right, #050B0E 0%, #050B0E 32%, rgba(5,11,14,0.85) 42%, rgba(5,11,14,0.4) 52%, rgba(5,11,14,0.1) 60%, transparent 68%)',
+            background: 'linear-gradient(to right, #050B0E 0%, #050B0E 30%, rgba(5,11,14,0.9) 38%, rgba(5,11,14,0.5) 46%, transparent 58%)',
           }}
         />
         {/* Top fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, #050B0E 0%, #050B0E 5%, transparent 25%)',
+            background: 'linear-gradient(to bottom, #050B0E 0%, transparent 20%)',
           }}
         />
         {/* Bottom fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to top, #050B0E 0%, #050B0E 3%, transparent 20%)',
+            background: 'linear-gradient(to top, #050B0E 0%, transparent 15%)',
           }}
         />
         {/* Right edge fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to left, #050B0E 0%, transparent 10%)',
+            background: 'linear-gradient(to left, #050B0E 0%, transparent 8%)',
           }}
         />
       </div>
