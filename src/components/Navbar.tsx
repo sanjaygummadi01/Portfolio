@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -63,12 +62,10 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
-          <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center gap-2">
-          <ThemeToggle />
           <button
             className="p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

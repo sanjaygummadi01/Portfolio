@@ -1,34 +1,31 @@
 const AnimatedBackground = () => {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-      {/* Floating orbs */}
-      <div className="absolute w-96 h-96 rounded-full bg-primary/5 blur-3xl animate-orb-1" />
-      <div className="absolute w-80 h-80 rounded-full bg-accent/5 blur-3xl animate-orb-2" />
-      <div className="absolute w-72 h-72 rounded-full bg-neon-teal/5 blur-3xl animate-orb-3" />
-      <div className="absolute w-64 h-64 rounded-full bg-neon-blue/5 blur-3xl animate-orb-4" />
+      {/* Slow drifting gradient blobs */}
+      <div className="absolute w-[600px] h-[600px] rounded-full opacity-[0.04] blur-[120px] bg-primary animate-drift-1" />
+      <div className="absolute w-[500px] h-[500px] rounded-full opacity-[0.03] blur-[100px] bg-accent animate-drift-2" />
+      <div className="absolute w-[400px] h-[400px] rounded-full opacity-[0.035] blur-[110px] bg-neon-teal animate-drift-3" />
 
-      {/* Grid lines */}
-      <div className="absolute inset-0 opacity-[0.03]"
+      {/* Soft ambient glow */}
+      <div className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(hsl(var(--neon-cyan) / 0.3) 1px, transparent 1px),
-                            linear-gradient(90deg, hsl(var(--neon-cyan) / 0.3) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px',
+          background: `radial-gradient(ellipse at 20% 50%, hsl(var(--neon-cyan) / 0.15) 0%, transparent 60%),
+                       radial-gradient(ellipse at 80% 30%, hsl(var(--neon-purple) / 0.1) 0%, transparent 50%)`,
         }}
       />
 
-      {/* Scanning line */}
-      <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent animate-scan" />
-
-      {/* Particles */}
-      {Array.from({ length: 20 }).map((_, i) => (
+      {/* Gentle floating motes */}
+      {Array.from({ length: 8 }).map((_, i) => (
         <div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/30 animate-particle"
+          className="absolute rounded-full bg-primary/20 animate-mote"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            animationDelay: `${Math.random() * 8}s`,
-            animationDuration: `${6 + Math.random() * 6}s`,
+            width: `${2 + Math.random() * 3}px`,
+            height: `${2 + Math.random() * 3}px`,
+            left: `${10 + Math.random() * 80}%`,
+            top: `${10 + Math.random() * 80}%`,
+            animationDelay: `${Math.random() * 10}s`,
+            animationDuration: `${12 + Math.random() * 10}s`,
           }}
         />
       ))}
