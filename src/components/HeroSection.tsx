@@ -10,40 +10,48 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: '#050B0E' }}
     >
-      {/* Half-face portrait - right half of face visible, left half blends to black */}
+      {/* Half-face portrait - tight crop, dramatic side lighting, blends into black */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <img
           src={heroPortrait}
           alt="Sanjay Gummadi"
-          className="absolute h-full object-cover"
+          className="absolute object-cover"
           style={{
-            right: '-5%',
-            top: '-10%',
-            height: '120%',
-            width: '70%',
-            objectPosition: '55% 25%',
-            filter: 'brightness(0.28) contrast(1.2) saturate(0.5)',
+            right: '-2%',
+            top: '50%',
+            transform: 'translateY(-48%)',
+            height: '110%',
+            width: '55%',
+            objectPosition: '60% 20%',
+            filter: 'brightness(0.55) contrast(1.35) saturate(0.7)',
           }}
         />
-        {/* Smooth left fade - blends face into black */}
+        {/* Left edge fade - face shadow side merges into background */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to right, #050B0E 0%, #050B0E 30%, rgba(5,11,14,0.85) 42%, rgba(5,11,14,0.4) 55%, transparent 70%)',
+            background: 'linear-gradient(to right, #050B0E 0%, #050B0E 35%, rgba(5,11,14,0.7) 45%, rgba(5,11,14,0.2) 55%, transparent 65%)',
           }}
         />
-        {/* Top fade */}
+        {/* Top subtle fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, #050B0E 0%, transparent 25%)',
+            background: 'linear-gradient(to bottom, #050B0E 0%, transparent 15%)',
           }}
         />
-        {/* Bottom fade */}
+        {/* Bottom subtle fade */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to top, #050B0E 0%, transparent 20%)',
+            background: 'linear-gradient(to top, #050B0E 0%, transparent 12%)',
+          }}
+        />
+        {/* Right edge fade */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(to left, #050B0E 0%, transparent 8%)',
           }}
         />
       </div>
