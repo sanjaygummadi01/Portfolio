@@ -7,8 +7,11 @@ import SkillsSection from '@/components/SkillsSection';
 import CertificationsSection from '@/components/CertificationsSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import useScrollReveal from '@/hooks/useScrollReveal';
 
 const Index = () => {
+  useScrollReveal();
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />

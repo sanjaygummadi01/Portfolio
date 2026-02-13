@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react';
+import useActiveSection from '@/hooks/useActiveSection';
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'UI/UX', href: '#uiux' },
-  { label: 'React Dev', href: '#react-dev' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Certifications', href: '#certifications' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '#home', id: 'home' },
+  { label: 'About', href: '#about', id: 'about' },
+  { label: 'UI/UX', href: '#uiux', id: 'uiux' },
+  { label: 'React Dev', href: '#react-dev', id: 'react-dev' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
+  { label: 'Certifications', href: '#certifications', id: 'certifications' },
+  { label: 'Contact', href: '#contact', id: 'contact' },
 ];
+
+const sectionIds = navItems.map((item) => item.id);
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const activeSection = useActiveSection(sectionIds);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +35,6 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
         <a href="#home" className="font-heading text-xl font-bold tracking-wider text-primary neon-text">
           SANJAY
         </a>
@@ -39,7 +42,11 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link">
+            <a
+              key={item.href}
+              href={item.href}
+              className={`nav-link ${activeSection === item.id ? 'nav-link-active' : ''}`}
+            >
               {item.label}
             </a>
           ))}
@@ -82,7 +89,7 @@ const Navbar = () => {
             <a
               key={item.href}
               href={item.href}
-              className="nav-link block py-2"
+              className={`nav-link block py-2 ${activeSection === item.id ? 'nav-link-active' : ''}`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}

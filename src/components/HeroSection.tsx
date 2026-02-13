@@ -20,16 +20,28 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center">
-          {/* Portrait Image */}
+          {/* Portrait Image with neon ring matching uploaded image style */}
           <div className="mb-8 animate-float">
             <div className="relative">
+              {/* Outer neon glow ring - cyan to purple gradient */}
+              <div className="absolute inset-[-16px] rounded-full" style={{
+                background: 'conic-gradient(from 180deg, hsl(180 100% 50%), hsl(280 100% 60%), hsl(320 100% 55%), hsl(280 100% 60%), hsl(180 100% 50%))',
+                filter: 'blur(12px)',
+                opacity: 0.6,
+              }} />
+              <div className="absolute inset-[-8px] rounded-full" style={{
+                background: 'conic-gradient(from 180deg, hsl(180 100% 50%), hsl(280 100% 60%), hsl(320 100% 55%), hsl(280 100% 60%), hsl(180 100% 50%))',
+                opacity: 0.8,
+              }} />
+              <div className="absolute inset-[-4px] rounded-full bg-background" />
               <img
                 src={heroPortrait}
                 alt="Sanjay - UI/UX Designer & React Developer"
-                className="w-40 h-40 md:w-52 md:h-52 object-cover neon-rim"
+                className="relative w-48 h-48 md:w-60 md:h-60 rounded-full object-cover object-top"
+                style={{
+                  boxShadow: '0 0 40px hsl(180 100% 50% / 0.3), 0 0 80px hsl(280 100% 60% / 0.2)',
+                }}
               />
-              {/* Outer Glow Ring */}
-              <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl scale-125" />
             </div>
           </div>
 

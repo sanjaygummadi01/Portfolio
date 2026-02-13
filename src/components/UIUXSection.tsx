@@ -31,19 +31,17 @@ const UIUXSection = () => {
   return (
     <section id="uiux" className="py-24 relative">
       <div className="container mx-auto px-6">
-        {/* Section Title */}
-        <h2 className="section-title text-center mb-4">UI/UX Case Studies</h2>
-        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16">
+        <h2 className="section-title text-center mb-4 scroll-reveal">UI/UX Case Studies</h2>
+        <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16 scroll-reveal" style={{ transitionDelay: '0.1s' }}>
           Explore my design process and see how user-centered thinking transforms complex problems into elegant solutions.
         </p>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {uiuxProjects.map((project, index) => (
             <div
               key={project.title}
-              className="opacity-0 animate-fade-in"
-              style={{ animationDelay: `${index * 0.15}s` }}
+              className="scroll-reveal"
+              style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
             >
               <ProjectCard {...project} />
             </div>

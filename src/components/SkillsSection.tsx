@@ -24,12 +24,10 @@ const SkillsSection = () => {
   return (
     <section id="skills" className="py-24 relative">
       <div className="container mx-auto px-6">
-        {/* Section Title */}
-        <h2 className="section-title text-center mb-16">Skills & Expertise</h2>
+        <h2 className="section-title text-center mb-16 scroll-reveal">Skills & Expertise</h2>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Design Skills */}
-          <div className="glass-card-glow p-8">
+          <div className="glass-card-glow p-8 scroll-reveal" style={{ transitionDelay: '0.15s' }}>
             <h3 className="font-heading text-xl font-semibold text-primary mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
                 ◈
@@ -37,12 +35,8 @@ const SkillsSection = () => {
               Design Skills
             </h3>
             <div className="flex flex-wrap gap-3">
-              {designSkills.map((skill, index) => (
-                <div
-                  key={skill.name}
-                  className="skill-badge opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {designSkills.map((skill) => (
+                <div key={skill.name} className="skill-badge">
                   <span className="text-primary">{skill.icon}</span>
                   {skill.name}
                 </div>
@@ -50,8 +44,7 @@ const SkillsSection = () => {
             </div>
           </div>
 
-          {/* Developer Skills */}
-          <div className="glass-card-glow p-8">
+          <div className="glass-card-glow p-8 scroll-reveal" style={{ transitionDelay: '0.3s' }}>
             <h3 className="font-heading text-xl font-semibold text-accent mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">
                 ⟨⟩
@@ -59,12 +52,11 @@ const SkillsSection = () => {
               Developer Skills
             </h3>
             <div className="flex flex-wrap gap-3">
-              {devSkills.map((skill, index) => (
+              {devSkills.map((skill) => (
                 <div
                   key={skill.name}
-                  className="skill-badge opacity-0 animate-fade-in"
+                  className="skill-badge"
                   style={{ 
-                    animationDelay: `${index * 0.1}s`,
                     borderColor: 'hsl(280 100% 60% / 0.3)',
                     color: 'hsl(280 100% 60%)',
                     boxShadow: '0 0 10px hsl(280 100% 60% / 0.1)'
