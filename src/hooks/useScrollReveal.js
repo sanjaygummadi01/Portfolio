@@ -31,8 +31,8 @@ const useScrollReveal = () => {
 
     const handleNavClick = () => {
       setTimeout(() => {
-        const revealElements = document.querySelectorAll('.scroll-reveal:not(.revealed), .scroll-reveal-left:not(.revealed), .scroll-reveal-right:not(.revealed), .scroll-reveal-scale:not(.revealed)');
-        revealElements.forEach((el) => {
+        const els = document.querySelectorAll('.scroll-reveal:not(.revealed), .scroll-reveal-left:not(.revealed), .scroll-reveal-right:not(.revealed), .scroll-reveal-scale:not(.revealed)');
+        els.forEach((el) => {
           const rect = el.getBoundingClientRect();
           if (rect.top < window.innerHeight && rect.bottom > 0) {
             el.classList.add('revealed');
