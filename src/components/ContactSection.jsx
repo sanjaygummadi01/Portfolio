@@ -5,11 +5,11 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const { ref, isVisible } = useScrollReveal();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
     alert('Thank you for your message! I will get back to you soon.');
@@ -19,13 +19,11 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24 relative">
       <div className="absolute inset-0 bg-glow-hero opacity-50" />
-      
       <div ref={ref} className="container mx-auto px-6 relative z-10">
         <h2 className={`section-title text-center mb-4 scroll-reveal ${isVisible ? 'revealed' : ''}`}>Let's Work Together</h2>
         <p className={`text-muted-foreground text-center max-w-2xl mx-auto mb-16 scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.15s' }}>
           Have a project in mind? I'd love to hear about it. Let's create something amazing together.
         </p>
-
         <div className="max-w-2xl mx-auto">
           <div className={`glass-card-glow p-8 md:p-12 scroll-reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.3s' }}>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -45,7 +43,6 @@ const ContactSection = () => {
                 <button type="submit" className="neon-btn-primary w-full">Send Message</button>
               </div>
             </form>
-
             <div className={`mt-10 pt-8 border-t border-muted/30 scroll-reveal ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.8s' }}>
               <p className="text-muted-foreground text-center text-sm mb-6">Or connect with me on</p>
               <div className="flex justify-center gap-6">

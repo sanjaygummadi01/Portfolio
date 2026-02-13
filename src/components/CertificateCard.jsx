@@ -1,36 +1,13 @@
 import { useState } from 'react';
 
-interface CertificateCardProps {
-  name: string;
-  issuer: string;
-  year: string;
-  image: string;
-  description: string;
-  variant?: 'design' | 'dev';
-  delay?: number;
-}
-
-const CertificateCard = ({
-  name,
-  issuer,
-  year,
-  image,
-  description,
-  variant = 'design',
-  delay = 0,
-}: CertificateCardProps) => {
+const CertificateCard = ({ name, issuer, year, image, description, variant = 'design', delay = 0 }) => {
   const [isOpen, setIsOpen] = useState(false);
-
   const accentColor = variant === 'design' ? 'primary' : 'accent';
   const borderStyle = variant === 'dev' ? { borderColor: 'hsl(280 100% 60% / 0.3)' } : {};
 
   return (
     <>
-      <div
-        onClick={() => setIsOpen(true)}
-        className="cert-badge opacity-0 animate-fade-in cursor-pointer group"
-        style={{ animationDelay: `${delay}s`, ...borderStyle }}
-      >
+      <div onClick={() => setIsOpen(true)} className="cert-badge opacity-0 animate-fade-in cursor-pointer group" style={{ animationDelay: `${delay}s`, ...borderStyle }}>
         <div className="flex items-center gap-4">
           <div className="w-16 h-12 rounded-lg overflow-hidden flex-shrink-0 border border-border/50 group-hover:border-primary/50 transition-colors">
             <img src={image} alt={`${name} certificate`} className="w-full h-full object-cover" />
@@ -48,38 +25,19 @@ const CertificateCard = ({
           </div>
         </div>
       </div>
-
-      {/* Custom Modal */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
-          onClick={() => setIsOpen(false)}
-        >
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setIsOpen(false)}>
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-
-          {/* Modal Content */}
-          <div
-            className="relative w-full max-w-2xl glass-card-glow p-6 rounded-xl border border-primary/30 animate-fade-in"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-              aria-label="Close"
-            >
+          <div className="relative w-full max-w-2xl glass-card-glow p-6 rounded-xl border border-primary/30 animate-fade-in" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors" aria-label="Close">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-
-            {/* Header */}
             <div className="mb-4">
               <h3 className="font-heading text-2xl text-foreground">{name}</h3>
               <p className="text-muted-foreground">Issued by {issuer} • {year}</p>
             </div>
-
             <div className="space-y-4">
               <div className="rounded-lg overflow-hidden border border-border/50" style={{ boxShadow: 'var(--shadow-neon-sm)' }}>
                 <img src={image} alt={`${name} full certificate`} className="w-full h-auto object-contain" />

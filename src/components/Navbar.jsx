@@ -18,8 +18,6 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-
-      // Determine active section
       const sections = navItems.map((item) => item.href.substring(1));
       let current = 'home';
       for (const id of sections) {
@@ -40,18 +38,13 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'glass-card py-3'
-          : 'bg-transparent py-5'
+        isScrolled ? 'glass-card py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
         <a href="#home" className="font-heading text-xl font-bold tracking-wider text-primary neon-text">
           SANJAY
         </a>
-
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-1">
           {navItems.map((item) => (
             <a
@@ -63,8 +56,6 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-
-        {/* Mobile Menu Button */}
         <div className="lg:hidden flex items-center gap-2">
           <button
             className="p-2 text-foreground"
@@ -72,32 +63,14 @@ const Navbar = () => {
             aria-label="Toggle menu"
           >
             <div className="w-6 h-5 flex flex-col justify-between">
-              <span
-                className={`block h-0.5 bg-primary transition-all duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`block h-0.5 bg-primary transition-all duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`block h-0.5 bg-primary transition-all duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
+              <span className={`block h-0.5 bg-primary transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`block h-0.5 bg-primary transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`block h-0.5 bg-primary transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </div>
           </button>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={`lg:hidden absolute top-full left-0 right-0 glass-card transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
-      >
+      <div className={`lg:hidden absolute top-full left-0 right-0 glass-card transition-all duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
         <div className="container mx-auto px-6 py-4 flex flex-col gap-2">
           {navItems.map((item) => (
             <a
