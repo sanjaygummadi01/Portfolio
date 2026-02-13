@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useActiveSection = (sectionIds: string[]) => {
+const useActiveSection = (sectionIds) => {
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {

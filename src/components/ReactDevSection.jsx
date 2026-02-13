@@ -1,4 +1,4 @@
-import ProjectCard from './ProjectCard';
+import ProjectCard from './ProjectCard.jsx';
 import reactProject1 from '@/assets/react-project-1.png';
 import reactProject2 from '@/assets/react-project-2.png';
 import reactProject3 from '@/assets/react-project-3.png';
@@ -35,14 +35,9 @@ const ReactDevSection = () => {
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16 scroll-reveal" style={{ transitionDelay: '0.1s' }}>
           Building performant, scalable web applications with React and modern JavaScript technologies.
         </p>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {reactProjects.map((project, index) => (
-            <div
-              key={project.title}
-              className="scroll-reveal"
-              style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
-            >
+            <div key={project.title} className="scroll-reveal" style={{ transitionDelay: `${0.2 + index * 0.15}s` }}>
               <ProjectCard {...project} />
             </div>
           ))}

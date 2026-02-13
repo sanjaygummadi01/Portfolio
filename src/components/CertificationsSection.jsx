@@ -1,4 +1,4 @@
-import CertificateCard from './CertificateCard';
+import CertificateCard from './CertificateCard.jsx';
 
 import certGoogleUx from '@/assets/cert-google-ux.png';
 import certIxdf from '@/assets/cert-ixdf.png';

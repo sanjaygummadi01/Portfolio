@@ -1,4 +1,4 @@
-import ProjectCard from './ProjectCard';
+import ProjectCard from './ProjectCard.jsx';
 import project1 from '@/assets/uiux-project-1.png';
 import project2 from '@/assets/uiux-project-2.png';
 import project3 from '@/assets/uiux-project-3.png';
@@ -35,14 +35,9 @@ const UIUXSection = () => {
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-16 scroll-reveal" style={{ transitionDelay: '0.1s' }}>
           Explore my design process and see how user-centered thinking transforms complex problems into elegant solutions.
         </p>
-
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {uiuxProjects.map((project, index) => (
-            <div
-              key={project.title}
-              className="scroll-reveal"
-              style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
-            >
+            <div key={project.title} className="scroll-reveal" style={{ transitionDelay: `${0.2 + index * 0.15}s` }}>
               <ProjectCard {...project} />
             </div>
           ))}

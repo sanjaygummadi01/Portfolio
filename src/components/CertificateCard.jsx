@@ -1,16 +1,6 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 
-interface CertificateCardProps {
-  name: string;
-  issuer: string;
-  year: string;
-  image: string;
-  description: string;
-  variant?: 'design' | 'dev';
-  delay?: number;
-}
-
 const CertificateCard = ({
   name,
   issuer,
@@ -19,7 +9,7 @@ const CertificateCard = ({
   description,
   variant = 'design',
   delay = 0,
-}: CertificateCardProps) => {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const accentColor = variant === 'design' ? 'primary' : 'accent';
@@ -50,17 +40,13 @@ const CertificateCard = ({
         </div>
       </div>
 
-      {/* Modal rendered via portal to avoid overflow/stacking issues */}
       {isOpen && createPortal(
         <div
           className="fixed inset-0 flex items-center justify-center p-4"
           style={{ zIndex: 9999 }}
           onClick={() => setIsOpen(false)}
         >
-          {/* Backdrop */}
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-
-          {/* Modal Content */}
           <div
             className="relative w-full max-w-2xl p-6 rounded-xl animate-fade-in"
             style={{
@@ -71,7 +57,6 @@ const CertificateCard = ({
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
               className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
@@ -83,7 +68,6 @@ const CertificateCard = ({
               </svg>
             </button>
 
-            {/* Header */}
             <div className="mb-4">
               <h3 className="font-heading text-2xl text-foreground">{name}</h3>
               <p className="text-muted-foreground">Issued by {issuer} • {year}</p>
