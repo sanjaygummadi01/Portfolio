@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Phone } from 'lucide-react';
 import useActiveSection from '@/hooks/useActiveSection';
 
 const navItems = [
@@ -50,6 +51,14 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
+          <a
+            href="tel:7815895795"
+            className="ml-2 p-2 rounded-full text-primary hover:bg-primary/10 transition-colors duration-200"
+            aria-label="Call Sanjay"
+            title="Call: 7815895795"
+          >
+            <Phone size={18} />
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -95,6 +104,13 @@ const Navbar = () => {
               {item.label}
             </a>
           ))}
+          <a
+            href="tel:7815895795"
+            className="nav-link flex items-center gap-2 py-2"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <Phone size={16} /> Call Me
+          </a>
         </div>
       </div>
     </nav>
