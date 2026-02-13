@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from "react";
+import { createPortal } from "react-dom";
 
 interface CertificateCardProps {
   name: string;
@@ -49,10 +50,11 @@ const CertificateCard = ({
         </div>
       </div>
 
-      {/* Custom Modal */}
-      {isOpen && (
+      {/* Modal rendered via portal to avoid overflow/stacking issues */}
+      {isOpen && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 flex items-center justify-center p-4"
+          style={{ zIndex: 9999 }}
           onClick={() => setIsOpen(false)}
         >
           {/* Backdrop */}
@@ -65,6 +67,7 @@ const CertificateCard = ({
               background: 'hsl(var(--background))',
               border: '1.5px solid hsl(180 100% 50% / 0.5)',
               boxShadow: '0 0 20px hsl(180 100% 50% / 0.15), 0 0 60px hsl(180 100% 50% / 0.08), inset 0 0 20px hsl(180 100% 50% / 0.03)',
+              zIndex: 10000,
             }}
             onClick={(e) => e.stopPropagation()}
           >
@@ -96,7 +99,8 @@ const CertificateCard = ({
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
