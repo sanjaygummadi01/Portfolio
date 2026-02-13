@@ -60,13 +60,19 @@ const CertificateCard = ({
 
           {/* Modal Content */}
           <div
-            className="relative w-full max-w-2xl glass-card-glow p-6 rounded-xl border border-primary/30 animate-fade-in"
+            className="relative w-full max-w-2xl p-6 rounded-xl animate-fade-in"
+            style={{
+              background: 'hsl(var(--background))',
+              border: '1.5px solid hsl(180 100% 50% / 0.5)',
+              boxShadow: '0 0 20px hsl(180 100% 50% / 0.15), 0 0 60px hsl(180 100% 50% / 0.08), inset 0 0 20px hsl(180 100% 50% / 0.03)',
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
+              style={{ border: '1.5px solid hsl(180 100% 50% / 0.6)', color: 'hsl(180 100% 50%)' }}
               aria-label="Close"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -81,10 +87,10 @@ const CertificateCard = ({
             </div>
 
             <div className="space-y-4">
-              <div className="rounded-lg overflow-hidden border border-border/50" style={{ boxShadow: 'var(--shadow-neon-sm)' }}>
+              <div className="rounded-lg overflow-hidden" style={{ border: '1px solid hsl(180 100% 50% / 0.3)', boxShadow: '0 0 15px hsl(180 100% 50% / 0.1)' }}>
                 <img src={image} alt={`${name} full certificate`} className="w-full h-auto object-contain" />
               </div>
-              <div className="glass-card p-4 rounded-lg" style={{ background: 'hsl(var(--glass-bg))' }}>
+              <div className="p-4 rounded-lg" style={{ background: 'hsl(180 100% 50% / 0.03)', border: '1px solid hsl(180 100% 50% / 0.15)' }}>
                 <h4 className="font-heading text-sm font-semibold text-primary mb-2">About this certification</h4>
                 <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
               </div>
