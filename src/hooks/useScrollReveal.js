@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 export const useScrollReveal = (threshold = 0.15) => {
-  const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const ref = React.useRef(null);
+  const [isVisible, setIsVisible] = React.useState(false);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
