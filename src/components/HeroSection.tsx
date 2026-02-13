@@ -23,14 +23,14 @@ const HeroSection = () => {
           {/* Portrait Image with neon ring matching uploaded image style */}
           <div className="mb-8 animate-float">
             <div className="relative">
-              {/* Outer neon glow ring - cyan to purple gradient */}
+              {/* Outer neon glow ring - light green */}
               <div className="absolute inset-[-16px] rounded-full" style={{
-                background: 'conic-gradient(from 180deg, hsl(180 100% 50%), hsl(280 100% 60%), hsl(320 100% 55%), hsl(280 100% 60%), hsl(180 100% 50%))',
+                background: 'hsl(120 100% 55%)',
                 filter: 'blur(12px)',
-                opacity: 0.6,
+                opacity: 0.5,
               }} />
               <div className="absolute inset-[-8px] rounded-full" style={{
-                background: 'conic-gradient(from 180deg, hsl(180 100% 50%), hsl(280 100% 60%), hsl(320 100% 55%), hsl(280 100% 60%), hsl(180 100% 50%))',
+                background: 'hsl(120 100% 55%)',
                 opacity: 0.8,
               }} />
               <div className="absolute inset-[-4px] rounded-full bg-background" />
@@ -40,7 +40,7 @@ const HeroSection = () => {
                 className="relative w-48 h-48 md:w-60 md:h-60 rounded-full object-cover"
                 style={{
                   objectPosition: '50% 30%',
-                  boxShadow: '0 0 40px hsl(180 100% 50% / 0.3), 0 0 80px hsl(280 100% 60% / 0.2)',
+                  boxShadow: '0 0 40px hsl(120 100% 55% / 0.3), 0 0 80px hsl(120 100% 45% / 0.2)',
                 }}
               />
             </div>
