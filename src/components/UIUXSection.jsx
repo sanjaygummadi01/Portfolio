@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import project1 from '@/assets/uiux-project-1.png';
 import project2 from '@/assets/uiux-project-2.png';
 import project3 from '@/assets/uiux-project-3.png';
@@ -11,7 +11,25 @@ const uiuxProjects = [
 ];
 
 const UIUXSection = () => {
-  const { ref, isVisible } = useScrollReveal();
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="uiux" className="py-24 relative">
       <div ref={ref} className="container mx-auto px-6">

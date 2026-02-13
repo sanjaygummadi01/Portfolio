@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
 import ProjectCard from './ProjectCard';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import reactProject1 from '@/assets/react-project-1.png';
 import reactProject2 from '@/assets/react-project-2.png';
 import reactProject3 from '@/assets/react-project-3.png';
@@ -11,7 +11,25 @@ const reactProjects = [
 ];
 
 const ReactDevSection = () => {
-  const { ref, isVisible } = useScrollReveal();
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="react-dev" className="py-24 relative bg-glow-radial">
       <div ref={ref} className="container mx-auto px-6">

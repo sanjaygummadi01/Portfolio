@@ -1,5 +1,5 @@
+import { useEffect, useRef, useState } from 'react';
 import CertificateCard from './CertificateCard';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 import certGoogleUx from '@/assets/cert-google-ux.png';
 import certIxdf from '@/assets/cert-ixdf.png';
@@ -21,7 +21,25 @@ const devCertifications = [
 ];
 
 const CertificationsSection = () => {
-  const { ref, isVisible } = useScrollReveal();
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section id="certifications" className="py-24 relative bg-glow-radial">
       <div ref={ref} className="container mx-auto px-6">
